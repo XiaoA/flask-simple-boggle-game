@@ -22,10 +22,10 @@ class FlaskTests(TestCase):
             self.assertIsNone(session.get('nplays'))
             self.assertIn(b'<p>High Score:', response.data)
             self.assertIn(b'Score:', response.data)
-            self.assertIn(b'Seconds Left:', response.data)h
+            self.assertIn(b'Seconds Left:', response.data)
 
-def test_valid_word(self):
-    """Test if word is valid by modifying the board in the session"""
+    def test_valid_word(self):
+        """Test if word is valid by modifying the board in the session"""
 
         with self.client as client:
             with client.session_transaction() as sess:
@@ -51,3 +51,4 @@ def test_valid_word(self):
         response = self.client.get(
             '/check-word?word=asdfasdfasdf')
         self.assertEqual(response.json['result'], 'not-word')            
+ 
